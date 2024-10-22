@@ -44,6 +44,6 @@ size_t ft_strlcat(char *dest, const char *src, size_t size)
     size_t len = ft_strlcat(dest, src, 15);
     printf("Contenido de dest: %s\n", dest);
     printf("Longitud de src: %s\n", src);
-
+a
     return 0;
 }
