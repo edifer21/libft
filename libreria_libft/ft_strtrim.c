@@ -76,3 +76,36 @@ int main(void)
 
     return 0;
 }
+
+mio 
+#include <unistd.h>
+char *ft_strtrim(char const *s1, char const *set)
+{
+  size_t len_s1;
+  
+  len_s1 = strlen(s1);
+  char *ptr;
+  char *str;
+  int i = 0;
+  ptr = "1";
+  while (s1[i] != '\0' && ptr != NULL)
+  {
+  ptr = strchr(set,s1[i]);
+  i++;
+  }
+  s1 = &s1[i]-1;
+  while (s1[len_s1 -1] != '\0' && ptr != NULL)
+  {
+  str = strchr(set,s1[len_s1]);
+  len_s1--;
+  }
+
+}
+
+int main (void)
+{
+  char s1[] = "qquuueeeeqqeu squedaneqque";
+  char set[] = "que";
+  ft_strtrim(s1,set);
+  //
+}
