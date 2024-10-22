@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patferna <patferna@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-10-21 12:26:07 by patferna          #+#    #+#             */
-/*   Updated: 2024-10-21 12:26:07 by patferna         ###   ########.fr       */
+/*   Created: 2024/10/21 12:26:07 by patferna          #+#    #+#             */
+/*   Updated: 2024/10/22 02:12:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ char *ft_strjoin(char const *s1, char const *s2)
 
 int main (void)
 {
-
+    ft_strjoin(s1, s2);
 }
