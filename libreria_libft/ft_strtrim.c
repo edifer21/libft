@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-
-
-char *ft_strtrim(char const *s1, char const *set)
-{
-
-}
-
-int main (void)
-{
-    
-}
-
-
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -32,80 +19,39 @@ char *ft_strtrim(char const *s1, char const *set)
 {
     size_t len_s1;
     size_t start = 0;
-    
-    // Longitud de la cadena original
+    int i;
+    char *ptr;
+
     len_s1 = strlen(s1);
-    int i = 0;
-    
-    // Recortar desde el inicio
+    i = 0;
     while (s1[i] != '\0' && strchr(set, s1[i]) != NULL)
     {
         i++;
     }
-    start = i;  // Guardar el nuevo inicio
-
-    // Recortar desde el final
+    start = i;
     while (len_s1 > start && strchr(set, s1[len_s1 - 1]) != NULL)
     {
         len_s1--;
     }
-
-    // Asignar memoria para la nueva cadena
-    char *trimmed_str = (char *)malloc(sizeof(char) * (len_s1 - start + 1));
-    if (!trimmed_str)
+    ptr = (char *)malloc(sizeof(char) * (len_s1 - start + 1));
+    if (!ptr)
         return NULL;
+    strncpy(ptr, &s1[start], len_s1 - start);
+    ptr[len_s1 - start] = '\0';
 
-    // Copiar la parte recortada a la nueva cadena
-    strncpy(trimmed_str, &s1[start], len_s1 - start);
-    trimmed_str[len_s1 - start] = '\0';  // Asegurarse de terminar con '\0'
-
-    return trimmed_str;
+    return ptr;
 }
 
 int main(void)
 {
-    char s1[] = "qquuueeeeqqeu squedaneqque";
-    char set[] = "que";
+    char s1[] = "hola que tal queso";
+    char set[] = "hosle";
     char *result = ft_strtrim(s1, set);
 
     if (result)
     {
-        write(1, result, strlen(result)); // Imprimir la cadena recortada
-        free(result); // Liberar la memoria asignada
+        write(1, result, strlen(result));
+        free(result);
     }
-
     return 0;
-}
-
-mio 
-#include <unistd.h>
-char *ft_strtrim(char const *s1, char const *set)
-{
-  size_t len_s1;
-  
-  len_s1 = strlen(s1);
-  char *ptr;
-  char *str;
-  int i = 0;
-  ptr = "1";
-  while (s1[i] != '\0' && ptr != NULL)
-  {
-  ptr = strchr(set,s1[i]);
-  i++;
-  }
-  s1 = &s1[i]-1;
-  while (s1[len_s1 -1] != '\0' && ptr != NULL)
-  {
-  str = strchr(set,s1[len_s1]);
-  len_s1--;
-  }
-
-}
-
-int main (void)
-{
-  char s1[] = "qquuueeeeqqeu squedaneqque";
-  char set[] = "que";
-  ft_strtrim(s1,set);
-  //
 }
