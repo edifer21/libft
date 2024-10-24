@@ -11,98 +11,75 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
+char *put_word(const char *start, const char *ptr)
+{
+    size_t len_word = ptr - start;
+    char *arrstr = (char*) malloc((len_word + 1) * sizeof(char));
+    if (!arrstr)
+        return (NULL);
+    strncpy(arrstr, start, len_word);
+    arrstr[len_word] = '\0';
+    return arrstr;
+}
+  int count_c( const char *s,  char c)
+{
+  int i;
+  char const *ptr;
+  ptr = s;
+  
+  i = 0;
+    while (*ptr != '\0' )
+    {
+      if (*ptr == c)
+      i++;
+      ptr++;
+    }
+    i++;
+     return i;
+  
+}
 char **ft_split(char const *s, char c)
 {
-    size_t i;
+	char **arrstr;
+    int b = 0;
+    const char *ptr; 
+    char const *start;
 
-    i = 0;
-    ft_strchr()
-
-    
-
-
+	ptr = s;
+	start = ptr;
+    arrstr = malloc((count_c(s,c) + 1) * sizeof(char*));
+    if (!arrstr)
+      return (NULL);
+    while (*ptr != '\0')
+    {
+      if (*ptr == c)
+      {
+        arrstr[b] = put_word(start, ptr);
+        if (!arrstr[b])
+          return (NULL);
+        b++;
+        start = ptr + 1;
+      }
+     ptr++;
+    }
+    if (ptr != start) 
+    {
+        arrstr[b] = put_word(start, ptr);
+        if (!arrstr[b])
+            return (NULL);
+        b++;
+    }
+    arrstr[b] = (NULL); 
+    return arrstr;
 }
 
 int main (void)
 {
     char ptr [] = "hola me quedan 6 dias";
-    char a [] = " ";
+    char a = ' ';
     ft_split (ptr, a);    
-}
-
-
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-char **ft_split(char const *s, char c)
-{
-    int i = 0, b = 0;
-    const char *ptr = s;
-    char **arrstr;
-    char *start = ptr;
-    size_t s_len = strlen(s);
-    
-    // Contar cuántas subcadenas habrá
-    while (*ptr != '\0')
-    {
-        if (*ptr == c)
-            i++;
-        ptr++;
-    }
-    i++; // Para incluir la última palabra si no termina en el delimitador
-
-    // Asignar memoria para el array de cadenas
-    arrstr = (char **)malloc((i + 1) * sizeof(char *)); // +1 para el NULL final
-    if (!arrstr)
-        return NULL; // Verificar si la memoria se asigna correctamente
-
-    ptr = s; // Reiniciar el puntero
-    start = ptr; // Punto de inicio de cada palabra
-    
-    while (*ptr != '\0')
-    {
-        if (*ptr == c)
-        {
-            size_t len = ptr - start; // Longitud de la palabra
-            arrstr[b] = (char *)malloc((len + 1) * sizeof(char)); // +1 para el carácter nulo
-            if (!arrstr[b])
-                return NULL; // Manejar errores de asignación
-            strncpy(arrstr[b], start, len);
-            arrstr[b][len] = '\0'; // Terminar la cadena con '\0'
-            b++;
-            start = ptr + 1; // Mover el inicio a la siguiente palabra
-        }
-        ptr++;
-    }
-
-    // Copiar la última palabra
-    size_t len = ptr - start;
-    arrstr[b] = (char *)malloc((len + 1) * sizeof(char));
-    strncpy(arrstr[b], start, len);
-    arrstr[b][len] = '\0';
-    b++;
-    
-    arrstr[b] = NULL; // Terminar con un NULL para indicar el final del array
-    return arrstr;
-}
-
-int main(void)
-{
-    char str[] = "hola me quedan 6 dias";
-    char delimiter = ' ';
-    char **result = ft_split(str, delimiter);
-
-    // Imprimir el resultado
-    int i = 0;
-    while (result[i])
-    {
-        printf("%s\n", result[i]);
-        free(result[i]); // Liberar cada subcadena
-        i++;
-    }
-    free(result); // Liberar el array de punteros
-
-    return 0;
 }
