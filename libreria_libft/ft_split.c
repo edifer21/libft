@@ -28,52 +28,40 @@ char *put_word(const char *start, const char *ptr)
   int count_c( const char *s,  char c)
 {
   int i;
-  char const *ptr;
-  ptr = s;
-  
+
   i = 0;
-    while (*ptr != '\0' )
+    while (*s != '\0' )
     {
-      if (*ptr == c)
-      i++;
-      ptr++;
+      if (*s == c)
+         i++;
+      s++;
     }
-    i++;
-     return i;
+     return i + 1;
   
+}
+void put_array(char **arrstr, const char *s, char c) {
+    const char *start = s;
+    int i = 0;
+
+    while (*s) {
+        if (*s == c) {
+            arrstr[i++] = put_word(start, s);
+            start = s + 1;
+        }
+        s++;
+    }
+    if (*start) 
+        arrstr[i++] = put_word(start, s);
+    arrstr[i] = NULL;
 }
 char **ft_split(char const *s, char c)
 {
-	char **arrstr;
-    int b = 0;
-    const char *ptr; 
-    char const *start;
-
-	ptr = s;
-	start = ptr;
+    char **arrstr;
+    
     arrstr = malloc((count_c(s,c) + 1) * sizeof(char*));
     if (!arrstr)
       return (NULL);
-    while (*ptr != '\0')
-    {
-      if (*ptr == c)
-      {
-        arrstr[b] = put_word(start, ptr);
-        if (!arrstr[b])
-          return (NULL);
-        b++;
-        start = ptr + 1;
-      }
-     ptr++;
-    }
-    if (ptr != start) 
-    {
-        arrstr[b] = put_word(start, ptr);
-        if (!arrstr[b])
-            return (NULL);
-        b++;
-    }
-    arrstr[b] = (NULL); 
+    put_array(arrstr, s, c);
     return arrstr;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: patferna <patferna@student.42madrid.com>   #+#  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-10-14 10:07:28 by patferna          #+#    #+#             */
-/*   Updated: 2024-10-14 10:07:28 by patferna         ###   ########.fr       */
+/*   Created: 2024/10/14 10:07:28 by patferna          #+#    #+#             */
+/*   Updated: 2024/10/25 09:37:49 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ while  (s[i] != 0)
 
 int main (void)
 {
-    char text[] = "quedan 10 días!!";
+    char text[] = "quedan 10 dias!!";
     //char * ptr;
     int  sele;
     
