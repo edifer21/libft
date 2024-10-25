@@ -21,7 +21,7 @@ char *put_word(const char *start, const char *ptr)
     char *arrstr = (char*) malloc((len_word + 1) * sizeof(char));
     if (!arrstr)
         return (NULL);
-    strncpy(arrstr, start, len_word);
+    ft_memcpy(arrstr, start, len_word);
     arrstr[len_word] = '\0';
     return arrstr;
 }
@@ -57,7 +57,7 @@ void put_array(char **arrstr, const char *s, char c) {
 char **ft_split(char const *s, char c)
 {
     char **arrstr;
-    
+
     arrstr = malloc((count_c(s,c) + 1) * sizeof(char*));
     if (!arrstr)
       return (NULL);
