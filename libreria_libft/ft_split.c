@@ -26,10 +26,10 @@ char *put_word(const char *start, const char *ptr)
 }
 	int count_c( const char *s,  char c)
 {
-	int i;
-	int in_word;
+	int	i;
+	int	in_word;
 	
-	i= 0;
+	i = 0;
 	in_word = 0;
 	while (*s == c) 
 				s++;
